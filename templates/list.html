@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <h1>TodoList</h1>
+  <a href="{% url 'create' %}" class="btn btn-primary">新規作成</a>
+  {% for item in object_list %}
+  <div class="card">
+    <h5 class="card-header">作成日:{{item.postdate}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{item.content}}</h5>
+      <a href="{% url 'update' item.pk %}" class="btn btn-primary">編集する</a>
+      <a href="{% url 'delete' item.pk %}" class="btn btn-primary">削除する</a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}
